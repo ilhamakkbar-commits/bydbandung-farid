@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Simulasi cicilan dan test drive mobil listrik BYD di Bandung." />
+  <title>BYD Bandung</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <a href="#beranda" class="brand">
+      <span class="logo">BYD</span>
+      <span class="kota">BANDUNG</span>
+    </a>
+
+    <button class="menu-btn" id="menuBtn" aria-label="Buka menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="menu" id="menu">
+      <a href="#beranda">Beranda</a>
+      <a href="#produk">Produk</a>
+      <a href="#simulasi">Simulasi Cicilan</a>
+      <a href="#testdrive">Test Drive</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="beranda">
+    <p class="label">BYD BANDUNG · JAWA BARAT</p>
+
+    <h1>PROMO EKSKLUSIF BYD BANDUNG.</h1>
+
+    <p class="deskripsi">
+      Temukan Pengalaman Berkendara Masa Depan Bersama Jajaran Kendaraan BYD. Nikmati Berbagai Penawaran Menraik, Teknologi Moderen dan Kenyamanan Berkendara.
+    </p>
+
+    <div class="tombol">
+      <a href="#produk" class="btn btn-terang">LIHAT MODEL</a>
+      <a href="https://wa.me/6282129852914?text=Halo%20Farid,%20saya%20ingin%20tanya%20promo%20BYD" target="_blank" rel="noopener" class="btn btn-garis">TANYA PROMO</a>
+    </div>
+  </section>
+
+  <!-- PRODUK -->
+<section class="prd" id="produk">
+  <p class="prd-label">PRODUK BYD</p>
+  <h2 class="prd-judul">Pilih Mobil Listrik Anda</h2>
+  <div class="prd-list" id="prd-list"></div>
+</section>
+
+<!-- DETAIL PRODUK (muncul saat tombol Lihat Detail diklik) -->
+<div class="prd-detail" id="prd-detail" hidden></div>
+
+<!-- SIMULASI CICILAN -->
+<section class="sim" id="simulasi">
+  <h2 class="sim-judul">Hitung Estimasi Angsuran</h2>
+  <p class="sim-desc">Dapatkan skema kredit resmi, TDP terjangkau, dan promo bunga spesial dari konsultan resmi BYD Bandung.</p>
+
+  <form class="sim-card" id="sim-form" novalidate>
+    <label for="sim-model">Pilih Model Kendaraan *</label>
+    <select id="sim-model" required>
+      <option value="">Pilih Model Kendaraan</option>
+      <option>BYD Atto 1</option>
+      <option>BYD M6 DM</option>
+      <option>BYD M6 EV</option>
+      <option>BYD Atto 3</option>
+      <option>BYD Dolphin</option>
+      <option>BYD Seal</option>
+      <option>Denza D9</option>
+    </select>
+
+    <label for="sim-dp">Rencana Uang Muka (DP) *</label>
+    <select id="sim-dp" required>
+      <option value="">Pilih Persentase DP</option>
+      <option>20%</option>
+      <option>25%</option>
+      <option>30%</option>
+      <option>35%</option>
+      <option>40%</option>
+      <option>50%</option>
+    </select>
+
+    <label for="sim-tenor">Jangka Waktu (Tenor) *</label>
+    <select id="sim-tenor" required>
+      <option value="">Pilih Jangka Waktu</option>
+      <option>1 Tahun</option>
+      <option>2 Tahun</option>
+      <option>3 Tahun</option>
+      <option>4 Tahun</option>
+      <option>5 Tahun</option>
+    </select>
+
+    <label for="sim-nama">Nama Lengkap *</label>
+    <input id="sim-nama" type="text" placeholder="e.g. Farid" autocomplete="name" required>
+
+    <p class="sim-error" id="sim-error" role="alert" hidden></p>
+    <button type="submit" class="sim-btn">Hitung Simulasi</button>
+  </form>
+</section>
+  <script src="script.js"></script>
+
+  <!-- ===== PROFIL SALES ===== -->
+<style>
+  .pf{padding:72px 20px;background:#fff}
+  .pf-box{max-width:980px;margin:0 auto;display:grid;grid-template-columns:1fr;background:#17233d;border-radius:28px;overflow:hidden;box-shadow:0 20px 50px rgba(23,35,61,.18)}
+  .pf-foto{background:#e9edf3}
+  .pf-foto img{display:block;width:100%;height:100%;object-fit:cover;object-position:center top;aspect-ratio:2/3}
+  .pf-info{padding:36px 28px;color:#fff;display:flex;flex-direction:column;justify-content:center}
+  .pf-label{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#7cc4f0;font-weight:700}
+  .pf-info h2{margin:10px 0 4px;font-size:clamp(30px,5vw,42px);line-height:1.15}
+  .pf-role{color:#c4cde0;font-size:16px}
+  .pf-line{width:56px;height:3px;background:#0a7fc4;border-radius:3px;margin:20px 0}
+  .pf-quote{color:#e4e9f3;line-height:1.7;font-size:16px}
+  .pf-poin{list-style:none;margin:22px 0 28px;padding:0}
+  .pf-poin li{position:relative;padding:12px 0 12px 30px;color:#e4e9f3;border-bottom:1px solid rgba(255,255,255,.12);font-size:15px}
+  .pf-poin li:last-child{border-bottom:0}
+  .pf-poin li:before{content:"✓";position:absolute;left:0;color:#7cc4f0;font-weight:700}
+  .pf-btns{display:grid;grid-template-columns:1fr;gap:12px}
+  .pf-btn{display:block;text-align:center;text-decoration:none;font-weight:700;font-size:15px;text-transform:uppercase;padding:16px;border-radius:14px}
+  .pf-wa{background:#22c55e;color:#fff}
+  .pf-td{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.5)}
+  @media(min-width:480px){.pf-btns{grid-template-columns:1fr 1fr}}
+  @media(min-width:760px){
+    .pf-box{grid-template-columns:5fr 6fr}
+    .pf-foto img{aspect-ratio:auto;min-height:100%}
+    .pf-info{padding:48px 44px}
+  }
+</style>
+
+<section class="pf" id="sales">
+  <div class="pf-box">
+    <div class="pf-foto">
+      <img loading="lazy" src="image/foto%20farid.webp" alt="Farid, Sales Consultant BYD Bandung">
+    </div>
+    <div class="pf-info">
+      <div class="pf-label">Konsultan Anda</div>
+      <h2>Farid</h2>
+      <div class="pf-role">Sales Consultant BYD Bandung</div>
+      <div class="pf-line"></div>
+      <p class="pf-quote">Saya siap membantu Anda memilih mobil listrik BYD yang sesuai kebutuhan dan budget, dengan penjelasan yang jujur dan jelas, mulai dari konsultasi, simulasi cicilan, hingga serah terima unit.</p>
+      <ul class="pf-poin">
+        <li>Konsultasi jujur sesuai kebutuhan Anda</li>
+        <li>Harga OTR Bandung yang transparan</li>
+        <li>Pendampingan sampai serah terima unit</li>
+      </ul>
+      <div class="pf-btns">
+        <a class="pf-btn pf-wa" target="_blank" rel="noopener" href="https://wa.me/6282129852914?text=Halo%20Farid%2C%20saya%20ingin%20konsultasi%20mobil%20BYD">Konsultasi WhatsApp</a>
+        <a class="pf-btn pf-td" target="_blank" rel="noopener" href="https://wa.me/6282129852914?text=Halo%20Farid%2C%20saya%20ingin%20jadwal%20test%20drive%20BYD">Test Drive</a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ===== AKHIR PROFIL SALES ===== -->
+
+  <!-- ===== BUKTI KEPERCAYAAN KONSUMEN ===== -->
+<style>
+  .bk{padding:72px 0;background:#f3f4f7;overflow:hidden}
+  .bk-head{max-width:760px;margin:0 auto 36px;padding:0 20px;text-align:center}
+  .bk-head h2{font-size:clamp(28px,6vw,44px);line-height:1.15;color:#111827}
+  .bk-head p{margin-top:14px;color:#6b7280;font-size:17px;line-height:1.6}
+  .bk-wrap{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+  .bk-track{display:flex;width:max-content;animation:bk-geser 45s linear infinite}
+  .bk-wrap:hover .bk-track{animation-play-state:paused}
+  .bk-card{flex:0 0 auto;width:280px;margin-right:18px;background:#fff;border-radius:24px;overflow:hidden;box-shadow:0 10px 30px rgba(17,24,39,.08)}
+  .bk-card img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;background:#d9dde6}
+  .bk-cap{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:16px 18px}
+  .bk-cap b{font-size:16px;color:#111827;text-transform:uppercase}
+  .bk-cap span{font-size:14px;color:#6b7280}
+  @keyframes bk-geser{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @media(max-width:480px){.bk{padding:56px 0}.bk-card{width:240px}}
+  @media(prefers-reduced-motion:reduce){.bk-track{animation:none}.bk-wrap{overflow-x:auto}}
+</style>
+
+<section class="bk" id="delivery">
+  <div class="bk-head">
+    <h2>Bukti Kepercayaan Konsumen</h2>
+    <p>Momen serah terima unit resmi kepada konsumen dengan standar transparan dan profesional.</p>
+  </div>
+  <div class="bk-wrap">
+    <div class="bk-track" id="bkTrack">
+      <div class="bk-card"><img loading="lazy" src="image/deliv%20farid%201.webp" alt="Serah terima unit 1"><div class="bk-cap"><b>Serah Terima Unit</b><span>BYD</span></div></div>
+      <div class="bk-card"><img loading="lazy" src="image/deliv%20farid%202.webp" alt="Serah terima unit 2"><div class="bk-cap"><b>Serah Terima Unit</b><span>BYD</span></div></div>
+      <div class="bk-card"><img loading="lazy" src="image/deliv%20farid%203.webp" alt="Serah terima unit 3"><div class="bk-cap"><b>Serah Terima Unit</b><span>BYD</span></div></div>
+      <div class="bk-card"><img loading="lazy" src="image/deliv%20farid%204.webp" alt="Serah terima unit 4"><div class="bk-cap"><b>Serah Terima Unit</b><span>BYD</span></div></div>
+      <div class="bk-card"><img loading="lazy" src="image/deliv%20farid%205.webp" alt="Serah terima unit 5"><div class="bk-cap"><b>Serah Terima Unit</b><span>BYD</span></div></div>
+      <div class="bk-card"><img loading="lazy" src="image/deliv%20farid%206.webp" alt="Serah terima unit 6"><div class="bk-cap"><b>Serah Terima Unit</b><span>BYD</span></div></div>
+      <div class="bk-card"><img loading="lazy" src="image/deliv%20farid%207.webp" alt="Serah terima unit 7"><div class="bk-cap"><b>Serah Terima Unit</b><span>BYD</span></div></div>
+      <div class="bk-card"><img loading="lazy" src="image/deliv%20farid%208.webp" alt="Serah terima unit 8"><div class="bk-cap"><b>Serah Terima Unit</b><span>BYD</span></div></div>
+      <div class="bk-card"><img loading="lazy" src="image/deliv%20farid%209.webp" alt="Serah terima unit 9"><div class="bk-cap"><b>Serah Terima Unit</b><span>BYD</span></div></div>
+    </div>
+  </div>
+</section>
+<script>
+  (function () {
+    var t = document.getElementById("bkTrack");
+    if (!t) return;
+    Array.prototype.slice.call(t.children).forEach(function (c) {
+      var k = c.cloneNode(true);
+      k.setAttribute("aria-hidden", "true");
+      t.appendChild(k);
+    });
+  })();
+</script>
+<!-- ===== AKHIR BUKTI KEPERCAYAAN KONSUMEN ===== -->
+
+<section class="byd-sec" id="sejarah">
+  <h2>Perjalanan BYD dari pabrik baterai hingga mobil listrik dunia</h2>
+  <p class="lead">BYD memulai dari baterai, bukan dari mobil. Pengalaman itulah yang membuat mereka percaya diri membangun kendaraan listrik dari komponen paling penting: dayanya.</p>
+
+  <ol class="tl">
+    <li><div class="yr">1995</div><h3>Berdiri di Shenzhen</h3>
+      <p>Wang Chuanfu mendirikan BYD sebagai produsen baterai isi ulang.</p></li>
+    <li><div class="yr">2003</div><h3>Masuk dunia otomotif</h3>
+      <p>BYD mengakuisisi Qinchuan Automobile dan mulai membangun mobil sendiri.</p></li>
+    <li><div class="yr">2005</div><h3>Sedan F3 meluncur</h3>
+      <p>Model pertama yang membawa BYD dikenal luas di pasar China.</p></li>
+    <li><div class="yr">2008</div><h3>F3DM, plug-in hybrid massal pertama</h3>
+      <p>BYD menjadi pelopor plug-in hybrid produksi massal. Di tahun yang sama, Berkshire Hathaway berinvestasi di BYD.</p></li>
+    <li><div class="yr">2020</div><h3>Blade Battery diperkenalkan</h3>
+      <p>Baterai LFP berbentuk bilah yang menekankan keamanan dan daya tahan.</p></li>
+    <li><div class="yr">2022</div><h3>Fokus penuh kendaraan listrik</h3>
+      <p>BYD menghentikan produksi mobil bensin murni dan hanya membuat New Energy Vehicle (NEV).</p></li>
+    <li><div class="yr">2023</div><h3>Pemimpin penjualan NEV dunia</h3>
+      <p>BYD menjadi produsen NEV terbesar, dan pada kuartal akhir menyalip Tesla dalam penjualan mobil listrik murni.</p></li>
+    <li><div class="yr">2024</div><h3>Hadir di Indonesia</h3>
+      <p>Atto 3, Dolphin, dan Seal diperkenalkan di Indonesia, bersama rencana pabrik di Subang, Jawa Barat.</p></li>
+  </ol>
+</section>
+
+<section class="byd-sec blade" id="blade-battery">
+  <h2>Blade Battery: kecil di bentuk, besar di keamanan</h2>
+  <p class="lead">Sel baterai dibuat panjang dan tipis seperti bilah, lalu disusun langsung ke dalam pack tanpa modul perantara.</p>
+
+  <div class="blade-grid">
+    <div>
+      <div class="pack">
+        <small>Pack konvensional: banyak modul, ruang terbuang</small>
+        <div class="cells old"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      </div>
+      <div class="pack">
+        <small>Blade Battery: sel panjang tersusun rapat (cell-to-pack)</small>
+        <div class="cells"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      </div>
+    </div>
+
+    <ul class="facts">
+      <li><b>Kimia LFP (Lithium Iron Phosphate)</b>Tanpa kobalt dan nikel. Lebih stabil terhadap panas dan lebih ramah biaya.</li>
+      <li><b>Lolos uji tusuk paku</b>Pada uji ini BYD melaporkan baterai tidak mengeluarkan api maupun asap, sementara baterai lain yang diuji dalam perbandingan yang sama bereaksi lebih parah.</li>
+      <li><b>Ruang lebih efisien</b>Desain cell-to-pack membuat pemanfaatan ruang pack lebih tinggi, sehingga jarak tempuh tetap baik walau LFP.</li>
+      <li><b>Awet untuk pemakaian harian</b>Siklus pengisian yang tinggi menjadikannya cocok untuk penggunaan jangka panjang.</li>
+    </ul>
+  </div>
+
+  <p class="note">Catatan: angka spesifik (persentase efisiensi ruang, jumlah siklus, garansi baterai) adalah klaim resmi BYD dan dapat berbeda per model. Cek brosur terbaru dan ketentuan garansi sebelum dicantumkan.</p>
+  <a class="cta" href="#testdrive">Coba langsung lewat Test Drive</a>
+</section>
+<section class="td" id="testdrive">
+  <div class="td-wrap">
+    <h2>Jadwalkan test drive</h2>
+    <p class="td-desc">Isi data di bawah, lalu kirim lewat WhatsApp. Tim kami akan mengonfirmasi jadwal Anda.</p>
+
+    <div class="td-card">
+      <label for="td-nama">Nama lengkap</label>
+      <input id="td-nama" type="text" placeholder="Contoh: Budi Santoso" autocomplete="name">
+
+      <label for="td-model">Model yang ingin dicoba</label>
+      <select id="td-model">
+        <option value="">Pilih model</option>
+        <option>BYD Atto 1</option>
+        <option>BYD Atto 3</option>
+        <option>BYD Dolphin</option>
+        <option>BYD Seal</option>
+        <option>BYD M6 EV</option>
+        <option>BYD M6 DM</option>
+        <option>Denza D9</option>
+      </select>
+
+      <div class="td-row">
+        <div>
+          <label for="td-tgl">Tanggal</label>
+          <input id="td-tgl" type="date">
+        </div>
+        <div>
+          <label for="td-jam">Jam</label>
+          <input id="td-jam" type="time">
+        </div>
+      </div>
+
+      <p class="td-error" id="td-error" hidden>Lengkapi nama, model, dan tanggal terlebih dahulu.</p>
+      <button class="td-btn" id="td-kirim" type="button">Kirim lewat WhatsApp</button>
+    </div>
+
+    <p class="td-alt">Lebih suka langsung chat?
+      <a href="https://wa.me/6282129852914?text=Halo%20BYD%20Bandung%2C%20saya%20ingin%20bertanya%20tentang%20test%20drive."
+         target="_blank" rel="noopener">Hubungi 0821-2985-2914</a></p>
+  </div>
+</section>
+
+<section class="lok" id="lokasi">
+  <div class="lok-wrap">
+    <h2>Lokasi dealer BYD Bandung</h2>
+    <p class="lok-desc">Kunjungi showroom kami untuk melihat unit langsung, test drive, dan konsultasi cicilan.</p>
+
+    <div class="lok-grid">
+      <div class="lok-info">
+        <h3>BYD Bandung</h3>
+        <address>
+          Jl. Soekarno-Hatta No.678, Cipamokolan,<br>
+          Kec. Rancasari, Kota Bandung,<br>
+          Jawa Barat 40292
+        </address>
+
+        <dl>
+          <dt>Telepon dan WhatsApp</dt>
+          <dd><a href="tel:+6282129852914">0821-2985-2914</a></dd>
+        </dl>
+
+        <a class="lok-btn" href="https://wa.me/6282129852914?text=Halo%20BYD%20Bandung%2C%20saya%20ingin%20bertanya." target="_blank" rel="noopener">Chat WhatsApp</a>
+        <a class="lok-link" href="https://www.google.com/maps/search/?api=1&query=Jl.%20Soekarno-Hatta%20No.678%2C%20Cipamokolan%2C%20Rancasari%2C%20Kota%20Bandung%2040292" target="_blank" rel="noopener">Buka di Google Maps</a>
+      </div>
+
+      <div class="lok-map">
+        <iframe
+          src="https://www.google.com/maps?q=Jl.%20Soekarno-Hatta%20No.678%2C%20Cipamokolan%2C%20Rancasari%2C%20Kota%20Bandung%2040292&output=embed"
+          title="Peta lokasi dealer BYD Bandung"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="sosmed">
+    <a href="GANTI-link-instagram" target="_blank" rel="noopener" aria-label="Instagram BYD Bandung">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+    </a>
+    <a href="GANTI-link-facebook" target="_blank" rel="noopener" aria-label="Facebook BYD Bandung">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+    </a>
+    <a href="GANTI-link-tiktok" target="_blank" rel="noopener" aria-label="TikTok BYD Bandung">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+    </a>
+    <a href="https://wa.me/6282129852914?text=Halo%20BYD%20Bandung%2C%20saya%20ingin%20bertanya." target="_blank" rel="noopener" aria-label="WhatsApp BYD Bandung">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+  </div>
+
+  <p>&copy; 2026 BYD Bandung. Harga dan ketersediaan unit dapat berubah, hubungi kami untuk informasi terbaru.</p>
+  <p class="foot-credit">Created by : Lavin</p>
+</footer>
+</body>
+</html>

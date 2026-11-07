@@ -1,0 +1,100 @@
+/* ===== DASAR ===== */
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Roboto,Arial,sans-serif;background:#f5f7fa;color:#17233d;line-height:1.5}
+main{max-width:720px;margin:0 auto;padding:24px 16px 64px}
+
+/* ===== HEADER ===== */
+.dh{position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:20px 5%;background:#fff;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.dh-logo{font-size:44px;font-weight:700;letter-spacing:8px;color:#17233d;text-decoration:none;line-height:1}
+.dh-back{font-weight:700;font-size:18px;color:#17233d;text-decoration:none}
+
+/* ===== GAMBAR UTAMA & PENGANTAR ===== */
+.d-hero{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:24px;background:#c9d1e0}
+.d-intro{text-align:center;padding:28px 8px 8px}
+.d-intro h1{font-size:clamp(28px,7vw,40px);text-transform:uppercase;line-height:1.15}
+.d-intro p{margin-top:10px;color:#6b7488;font-size:17px}
+
+/* ===== JUDUL BAGIAN ===== */
+.d-sec{text-align:center;margin:56px 0 24px}
+.d-sec h2{font-size:clamp(26px,6vw,36px);text-transform:uppercase}
+.d-sec p{margin-top:8px;color:#6b7488}
+
+/* ===== KARTU TIPE & HARGA ===== */
+.d-card{background:#fff;border-radius:28px;padding:36px 30px;margin-bottom:22px;box-shadow:0 8px 28px rgba(23,35,61,.07)}
+.d-card h3{font-size:30px;text-transform:uppercase;line-height:1.15}
+.d-harga{margin:18px 0 28px;font-size:44px;font-weight:700;color:#0a7fc4;line-height:1.1}
+.d-card ul{list-style:none;margin-bottom:28px}
+.d-card li{padding:16px 0;border-bottom:1px solid #e6eaf0;color:#4a5568;font-size:18px}
+
+/* ===== TOMBOL ===== */
+.d-btn{display:block;text-align:center;text-decoration:none;font-weight:700;font-size:20px;text-transform:uppercase;padding:20px;border-radius:16px;background:#0a7fc4;color:#fff}
+.d-navy{background:#17233d}
+.d-wa{background:#22c55e}
+
+/* ===== TABEL PERBANDINGAN ===== */
+.d-scroll{overflow-x:auto;background:#fff;border-radius:24px;box-shadow:0 8px 28px rgba(23,35,61,.07)}
+.d-tabel{width:100%;min-width:0;border-collapse:collapse}
+.d-tabel th,.d-tabel td{padding:16px 14px;text-align:center;border-bottom:1px solid #e6eaf0;font-size:15px}
+.d-tabel th{background:#17233d;color:#fff;text-transform:uppercase;font-size:13px;letter-spacing:.06em}
+.d-tabel td:first-child,.d-tabel th:first-child{text-align:left;font-weight:700}
+.d-tabel tr:last-child td{border-bottom:0}
+.d-tabel .ya{color:#0a7fc4;font-weight:700;font-size:18px}
+.d-tabel .tidak{color:#d6336c;font-weight:700;font-size:16px}
+
+/* Tabel dengan banyak kolom (4 kolom ke atas, termasuk kolom "Fitur"): lebar dan bisa digeser */
+.d-tabel.d-lebar:has(th:nth-child(5)){min-width:820px}
+.d-tabel.d-lebar td:first-child{min-width:150px;background:#fff}
+.d-tabel.d-lebar:has(th:nth-child(5)) td:first-child{position:sticky;left:0}
+
+/* Tabel kecil (Dolphin, 2 tipe): kolom pertama lebih lebar agar rapi */
+.d-tabel:not(:has(th:nth-child(4))) td:first-child,
+.d-tabel:not(:has(th:nth-child(4))) th:first-child{width:40%}
+
+/* Tulisan "Geser tabel": disembunyikan kalau tabelnya sedikit kolom */
+.d-note2{margin-top:10px;text-align:center;color:#6b7488;font-size:14px}
+.d-scroll:not(:has(th:nth-child(4))) + .d-note2{display:none}
+
+/* ===== KOTAK DIMENSI / SPEK / KESELAMATAN / GARANSI ===== */
+.d-dim{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.d-dim div{background:#fff;border-radius:20px;padding:24px 12px;text-align:center;box-shadow:0 8px 28px rgba(23,35,61,.07)}
+.d-dim b{display:block;font-size:26px;color:#0a7fc4}
+.d-dim small{display:block;margin-bottom:4px;color:#6b7488;font-size:14px}
+@media(min-width:640px){.d-dim{grid-template-columns:repeat(3,1fr)}}
+
+/* ===== DAFTAR CENTANG (KENYAMANAN & KEUNGGULAN) ===== */
+.d-unggul{background:#fff;border-radius:24px;padding:12px 28px;box-shadow:0 8px 28px rgba(23,35,61,.07);list-style:none}
+.d-unggul li{padding:16px 0 16px 34px;border-bottom:1px solid #e6eaf0;position:relative;font-size:17px;color:#4a5568}
+.d-unggul li:last-child{border-bottom:0}
+.d-unggul li:before{content:"✓";position:absolute;left:0;top:16px;color:#0a7fc4;font-weight:700}
+
+/* ===== GALERI ===== */
+.d-gal{display:grid;grid-template-columns:1fr;gap:16px}
+@media(min-width:640px){.d-gal{grid-template-columns:1fr 1fr}}
+.d-gal figure{margin:0;background:#fff;border-radius:24px;overflow:hidden;box-shadow:0 8px 28px rgba(23,35,61,.07)}
+.d-gal img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
+.d-gal figcaption{padding:18px 20px}
+.d-gal figcaption b{display:block;font-size:19px;margin-bottom:4px}
+.d-gal figcaption span{color:#6b7488;font-size:15px}
+
+/* ===== KOTAK PERFORMA ===== */
+.d-box{background:#fff;border-radius:24px;padding:26px 24px;box-shadow:0 8px 28px rgba(23,35,61,.07)}
+.d-box h3{font-size:22px;margin-bottom:8px}
+.d-box p{color:#4a5568;margin-bottom:12px}
+.d-box .d-unggul{box-shadow:none;padding:0;border-radius:0}
+
+/* ===== TOMBOL BAWAH ===== */
+.d-cta{margin-top:56px}
+.d-cta .d-btn{margin-bottom:12px}
+.d-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.d-2 .d-btn{margin:0;background:#fff;color:#0a7fc4;border:2px solid #0a7fc4;font-size:17px}
+
+/* ===== PESAN KOSONG ===== */
+.d-kosong{padding:40px 0;text-align:center;color:#6b7488}
+
+/* ===== HP KECIL ===== */
+@media(max-width:480px){
+  .dh-logo{font-size:34px;letter-spacing:5px}
+  .dh-back{font-size:15px}
+  .d-card{padding:28px 22px}
+  .d-harga{font-size:36px}
+}
